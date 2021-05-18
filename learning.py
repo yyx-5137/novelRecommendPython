@@ -63,7 +63,7 @@ def learning():
 	tf.summary.scalar('loss', loss)
 	summaryMerged = tf.summary.merge_all()
 	filename = './novel_tensorboard'
-	writer = tf.summary.FileWriter(filename)
+	# writer = tf.summary.FileWriter(filename)
 
 	sess = tf.Session()
 	init = tf.global_variables_initializer()
@@ -78,7 +78,7 @@ def learning():
 			predicts = np.dot(Current_X_parameters,Current_Theta_parameters.T) + rating_mean
 			errors = np.mean((predicts - rating)**2)
 			print('step:', i, ' train loss:%.5f' % (l/penalty), ' test loss:%.5f' % errors)
-		writer.add_summary(novel_summary, i)
+		# writer.add_summary(novel_summary, i)
 
 	Current_X_parameters, Current_Theta_parameters = sess.run([X_parameters, Theta_paramters])
 	predicts = np.dot(Current_X_parameters,Current_Theta_parameters.T) + rating_mean
